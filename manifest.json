@@ -5,11 +5,11 @@
     "manifest_version": 2,
     "content_scripts": [
         {
-            "run_at": "document_end",
+            "run_at": "document_idle",
             "matches": ["https://www.mirrativ.com/live/*"],
             "css": [
                 "lib/emoji-picker/css/emoji.css",
-                "lib/font-awesome/font-awesome.min.css"
+                "lib/font-awesome/css/all.min.css"
             ],
             "js": [
                 "lib/jquery/jquery-3.3.1.min.js",
@@ -22,5 +22,9 @@
                 "src/content_script.js"
             ]
         }
+    ],
+    "web_accessible_resources": [
+        "lib/emoji-picker/img/*",
+        "lib/font-awesome/webfonts/*"
     ]
 }
