@@ -1,0 +1,26 @@
+{
+    "name": "Mirrativ Emoji",
+    "description" : "Emoji picker for Mirrativ",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_scripts": [
+        {
+            "run_at": "document_end",
+            "matches": ["https://www.mirrativ.com/live/*"],
+            "css": [
+                "lib/emoji-picker/css/emoji.css",
+                "lib/font-awesome/font-awesome.min.css"
+            ],
+            "js": [
+                "lib/jquery/jquery-3.3.1.min.js",
+
+                "lib/emoji-picker/js/config.js",
+                "lib/emoji-picker/js/util.js",
+                "lib/emoji-picker/js/jquery.emojiarea.js",
+                "lib/emoji-picker/js/emoji-picker.js",
+
+                "src/content_script.js"
+            ]
+        }
+    ]
+}
