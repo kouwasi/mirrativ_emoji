@@ -17,6 +17,7 @@ observer.observe(target, {childList: true, subtree: true});
 function postComment(inputElement) {
     const liveId = parseLiveId();
     const csrfToken = $('meta').filter('[name=csrf-token]')[0].content;
+    const comment = inputElement[0].emojioneArea.getText();
     
     // コメント空に
     inputElement[0].emojioneArea.setText("");
@@ -34,7 +35,7 @@ function postComment(inputElement) {
         data: {
             live_id: liveId, 
             type: 1,
-            comment: inputElement[0].emojioneArea.getText()
+            comment: comment
         }
     }).fail(function(xhr, status, error) {
         alert(`
