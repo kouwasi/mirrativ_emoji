@@ -1,18 +1,22 @@
 const target = document.getElementById('app');
 
-const observer = new MutationObserver((_mutations) => {
-    if($('input').length) {
-        const inputElement = $('input').emojioneArea({ pickerPosition: "bottom", autocomplete: false});
+function watchCommentElement() {
+    const input = $('input');
 
-        $('.emojionearea-editor').keydown(function(event) {
-            if(event.which == 13 && inputElement[0].emojioneArea.getText()) postComment(inputElement);
-        });
-
-        observer.disconnect();
+    if(input.length == 1 && input[0].baseURI.match("https:\/\/www.mirrativ.com\/live\/.*")) {
+        emojiable();
+    } else {
+        setTimeout(watchCommentElement, 1000);
     }
-});
+}
 
-observer.observe(target, {childList: true, subtree: true});
+function emojiable() {
+    const inputElement = $('input').emojioneArea({ pickerPosition: "bottom", autocomplete: false});
+
+    $('.emojionearea-editor').keydown(function(event) {
+        if(event.which == 13 && inputElement[0].emojioneArea.getText()) postComment(inputElement);
+    });
+}
 
 function postComment(inputElement) {
     const liveId = parseLiveId();
@@ -59,23 +63,4 @@ function parseLiveId() {
     return splitedURL[splitedURL.length - 1]
 }
 
-$.ajax({
-    url: 'https://www.mirrativ.com/api/live/live_commen',
-    accepts: {
-        json: "application/json"
-    },
-    dataType: 'json',
-    type: 'POST',
-    headers: {
-        'x-csrf-token': "wb_jQF4HlUw5g4YKGY2nY_MMQ2BI8ermim7wIkpH"
-    },
-    data: {
-        live_id: "mWrvkOl0aExKuJKDqzAt7w", 
-        type: 1,
-        comment: "てすと"
-    }
-}).fail(function(xhr, status, error) {
-    console.log(xhr)
-    console.log(status)
-    console.log(error)
-})
+watchCommentElement();
