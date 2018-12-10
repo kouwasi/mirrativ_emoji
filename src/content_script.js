@@ -1,12 +1,12 @@
 const target = document.getElementById('app');
 
+setInterval(watchCommentElement, 1000);
+
 function watchCommentElement() {
     const input = $('input');
 
     if(input.length == 1 && input[0].baseURI.match("https:\/\/www.mirrativ.com\/live\/.*")) {
         emojiable();
-    } else {
-        setTimeout(watchCommentElement, 1000);
     }
 }
 
@@ -62,5 +62,3 @@ function parseLiveId() {
     const splitedURL = location.href.split("/");
     return splitedURL[splitedURL.length - 1]
 }
-
-watchCommentElement();
