@@ -8,16 +8,13 @@
             "run_at": "document_idle",
             "matches": ["https://www.mirrativ.com/live/*"],
             "css": [
-                "lib/emoji-picker/css/emoji.css",
-                "lib/font-awesome/css/all.min.css"
+                "lib/emojionearea/emojionearea.min.css"
             ],
             "js": [
                 "lib/jquery/jquery-3.3.1.min.js",
 
-                "lib/emoji-picker/js/config.js",
-                "lib/emoji-picker/js/util.js",
-                "lib/emoji-picker/js/jquery.emojiarea.js",
-                "lib/emoji-picker/js/emoji-picker.js",
+                "lib/emojione/emojione.min.js",
+                "lib/emojionearea/emojionearea.min.js",
 
                 "src/content_script.js"
             ]
