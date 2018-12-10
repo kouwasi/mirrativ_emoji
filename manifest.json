@@ -1,12 +1,12 @@
 {
     "name": "Mirrativ Emoji",
     "description" : "Emoji picker for Mirrativ",
-    "version": "1.0",
+    "version": "1.1",
     "manifest_version": 2,
     "content_scripts": [
         {
             "run_at": "document_idle",
-            "matches": ["https://www.mirrativ.com/live/*"],
+            "matches": ["https://www.mirrativ.com/*"],
             "css": [
                 "lib/emojionearea/emojionearea.min.css"
             ],

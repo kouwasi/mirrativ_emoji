@@ -1,18 +1,22 @@
 const target = document.getElementById('app');
 
-const observer = new MutationObserver((_mutations) => {
-    if($('input').length) {
-        const inputElement = $('input').emojioneArea({ pickerPosition: "bottom", autocomplete: false});
+function watchCommentElement() {
+    const input = $('input');
 
-        $('.emojionearea-editor').keydown(function(event) {
-            if(event.which == 13 && inputElement[0].emojioneArea.getText()) postComment(inputElement);
-        });
-
-        observer.disconnect();
+    if(input.length == 1 && input[0].baseURI.match("https:\/\/www.mirrativ.com\/live\/.*")) {
+        emojiable();
+    } else {
+        setTimeout(watchCommentElement, 1000);
     }
-});
+}
 
-observer.observe(target, {childList: true, subtree: true});
+function emojiable() {
+    const inputElement = $('input').emojioneArea({ pickerPosition: "bottom", autocomplete: false});
+
+    $('.emojionearea-editor').keydown(function(event) {
+        if(event.which == 13 && inputElement[0].emojioneArea.getText()) postComment(inputElement);
+    });
+}
 
 function postComment(inputElement) {
     const liveId = parseLiveId();
@@ -58,3 +62,5 @@ function parseLiveId() {
     const splitedURL = location.href.split("/");
     return splitedURL[splitedURL.length - 1]
 }
+
+watchCommentElement();
