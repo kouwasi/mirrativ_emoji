@@ -37,6 +37,8 @@ function postComment(inputElement) {
             type: 1,
             comment: comment
         }
+
+        // TODO: successでレスポンスが成功か確認する
     }).fail(function(xhr, status, error) {
         alert(`
             コメントの投稿に失敗しました。
