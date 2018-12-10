@@ -58,24 +58,3 @@ function parseLiveId() {
     const splitedURL = location.href.split("/");
     return splitedURL[splitedURL.length - 1]
 }
-
-$.ajax({
-    url: 'https://www.mirrativ.com/api/live/live_commen',
-    accepts: {
-        json: "application/json"
-    },
-    dataType: 'json',
-    type: 'POST',
-    headers: {
-        'x-csrf-token': "wb_jQF4HlUw5g4YKGY2nY_MMQ2BI8ermim7wIkpH"
-    },
-    data: {
-        live_id: "mWrvkOl0aExKuJKDqzAt7w", 
-        type: 1,
-        comment: "てすと"
-    }
-}).fail(function(xhr, status, error) {
-    console.log(xhr)
-    console.log(status)
-    console.log(error)
-})
